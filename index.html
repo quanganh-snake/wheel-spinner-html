@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Spinner</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="sweetalert2.min.js"></script>
+		<link rel="stylesheet" href="sweetalert2.min.css" />
+		<script>
+			tailwind.config = {
+				theme: {
+					container: {
+						center: true,
+						padding: "1rem",
+					},
+					extend: {
+						backgroundImage: {
+							"hero-cover": "url('./images/bgr.jpg')",
+						},
+					},
+				},
+			};
+		</script>
+		<link rel="stylesheet" href="./css/style.css" />
+		<style>
+			/* .wheel__dot li:nth-child(1)::after {
+				content: "";
+				display: block;
+				width: 13px;
+				height: 13px;
+				border-radius: 50%;
+				background-color: rgb(199, 216, 11);
+				transform: rotate(0deg);
+			} */
+			.wheel {
+				position: relative;
+				width: 300px;
+				height: 300px;
+				border-radius: 50%;
+				border: 14px solid red;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+				overflow: hidden;
+				/* transform: rotate(30deg); */
+			}
+
+			/* .wheel__dot {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 300px;
+				height: 300px;
+				border-radius: 50%;
+				border: 14px solid red;
+				border: transparent;
+				overflow: hidden;
+			}*/
+		</style>
+	</head>
+	<body>
+		<div class="spinner w-full bg-hero-cover min-h-screen bg-cover bg-center">
+			<div class="container">
+				<div class="spinner__inner w-full min-h-screen">
+					<nav class="spinner__nav h-6 absolute top-0 left-0 w-full px-2 pt-6 flex items-center justify-between">
+						<a href="#" class="spinner__link text-white font-bold text-sm drop-shadow-sm flex flex-col items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1)">
+								<path
+									d="M12 4C9.243 4 7 6.243 7 9h2c0-1.654 1.346-3 3-3s3 1.346 3 3c0 1.069-.454 1.465-1.481 2.255-.382.294-.813.626-1.226 1.038C10.981 13.604 10.995 14.897 11 15v2h2v-2.009c0-.024.023-.601.707-1.284.32-.32.682-.598 1.031-.867C15.798 12.024 17 11.1 17 9c0-2.757-2.243-5-5-5zm-1 14h2v2h-2z"
+								></path>
+							</svg>
+							<span>Thể lệ</span>
+						</a>
+						<a href="#" class="spinner__link text-white font-bold text-sm drop-shadow-sm flex flex-col items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1)">
+								<path d="M12 8v5h5v-2h-3V8z"></path>
+								<path
+									d="M21.292 8.497a8.957 8.957 0 0 0-1.928-2.862 9.004 9.004 0 0 0-4.55-2.452 9.09 9.09 0 0 0-3.626 0 8.965 8.965 0 0 0-4.552 2.453 9.048 9.048 0 0 0-1.928 2.86A8.963 8.963 0 0 0 4 12l.001.025H2L5 16l3-3.975H6.001L6 12a6.957 6.957 0 0 1 1.195-3.913 7.066 7.066 0 0 1 1.891-1.892 7.034 7.034 0 0 1 2.503-1.054 7.003 7.003 0 0 1 8.269 5.445 7.117 7.117 0 0 1 0 2.824 6.936 6.936 0 0 1-1.054 2.503c-.25.371-.537.72-.854 1.036a7.058 7.058 0 0 1-2.225 1.501 6.98 6.98 0 0 1-1.313.408 7.117 7.117 0 0 1-2.823 0 6.957 6.957 0 0 1-2.501-1.053 7.066 7.066 0 0 1-1.037-.855l-1.414 1.414A8.985 8.985 0 0 0 13 21a9.05 9.05 0 0 0 3.503-.707 9.009 9.009 0 0 0 3.959-3.26A8.968 8.968 0 0 0 22 12a8.928 8.928 0 0 0-.708-3.503z"
+								></path>
+							</svg>
+							<span>Lịch sử</span>
+						</a>
+					</nav>
+					<!-- END: .spinner__nav -->
+
+					<div class="spinner__header pt-8 w-full flex items-center justify-between">
+						<div class="header__left flex items-center gap-2 py-10">
+							<img src="./images/logo_mb.png" alt="" width="100" class="w-42" />
+							<div class="h-12 w-[1.5px] bg-sky-800"></div>
+							<img src="./images/logo_jcb.png" alt="" width="60" class="w-42" />
+						</div>
+						<!-- END: .header__left -->
+						<div class="header__right text-white flex items-center gap-4">
+							<div class="font-bold text-xl">
+								<p class="uppercase">BETHE<span class="bad-script-regular">Sky</span></p>
+								<p>Du hí</p>
+							</div>
+							<div class="h-20 w-[1.5px] bg-white"></div>
+							<div class="uppercase font-bold text-xl">
+								<p>Thẻ sành điệu</p>
+								<p>Triệu ưu đại</p>
+							</div>
+						</div>
+						<!-- END: .header__right -->
+					</div>
+					<!-- END: .spinner__header -->
+					<main>
+						<section class="main">
+							<h3 class="text-xl text-center uppercase font-bold text-white">
+								Vòng quay <br />
+								thần tượng
+							</h3>
+							<span id="arrow">
+								<ul class="wheel bg-white text-xs text-black"></ul>
+								<!-- <ul class="wheel__dot text-xs text-black">
+									<li></li>
+									<li></li>
+									<li></li>
+									<li></li>
+									<li></li>
+									<li></li>
+									<li></li>
+									<li></li>
+									<li></li>
+									<li></li>
+								</ul> -->
+							</span>
+							<p class="text-center text-white text-xl">Còn <span class="font-bold">4</span> lượt</p>
+							<br />
+							<button class="btn--spin absolute top-50 z-20 text-white">Xoay</button>
+						</section>
+						<h1 class="msg"></h1>
+					</main>
+					<!-- END: .spinner__main -->
+
+					<div class="spinner__card absolute bottom-4 right-10">
+						<div class="flex items-start justify-end gap-6">
+							<!-- <div class="h-[200px] w-[300px] relative">
+								<img src="./images/card1.png" alt="" class="absolute top-0 left-0 w-full h-full" />
+							</div> -->
+							<img src="./images/card_h.png" alt="" height="40" class="h-[100px] mt-auto" />
+							<img src="./images/card2.png" alt="" width="100" />
+							<img src="./images/card3.png" alt="" width="100" />
+							<img src="./images/card4.png" alt="" width="100" />
+						</div>
+					</div>
+					<!-- END: .spinner__card -->
+				</div>
+				<!-- END: .spinner__inner -->
+			</div>
+		</div>
+		<!-- Dependencies -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js"></script>
+		<script src="./js/main.js"></script>
+	</body>
+</html>
