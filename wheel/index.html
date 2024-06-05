@@ -27,7 +27,7 @@
 		</script>
 		<link rel="stylesheet" href="./css/style.css" />
 		<style>
-			.wheel {
+			/* .wheel {
 				position: relative;
 				width: 300px;
 				height: 300px;
@@ -35,27 +35,20 @@
 				border: 14px solid red;
 				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 				overflow: hidden;
-			}
+				z-index: 10;
+			} */
 
-			.list__ball {
-				position: absolute;
-				top: 21%;
+			.wheel__ball {
+				position: relative;
 				width: 300px;
 				height: 300px;
 				border-radius: 50%;
-				list-style: none;
-				margin: 0 auto;
-				padding: 0;
-				transform: translateZ(1px);
+				/* overflow: hidden; */
+				z-index: 50;
+				border: 0px solid red;
 			}
 
-			.list__ball .ball {
-				position: absolute;
-				top: 0;
-				left: 50%;
-				width: 20px;
-				height: 20px;
-				margin-left: -10px;
+			.item__ball {
 				background-color: yellow;
 				border-radius: 50%;
 			}
@@ -107,19 +100,24 @@
 						<!-- END: .header__right -->
 					</div>
 					<!-- END: .spinner__header -->
-					<main>
-						<section class="main">
+					<main class="w-full w-full flex items-center justify-center">
+						<section class="main w-[400px] h-[400px] relative">
 							<h3 class="text-xl text-center uppercase font-bold text-white">
 								Vòng quay <br />
 								thần tượng
 							</h3>
-							<div id="arrow" class="">
-								<ul class="wheel bg-white text-xs text-black"></ul>
-								<ul class="list__ball"></ul>
+							<div id="arrow" class="absolute z-10">
+								<ul id="wheel" class="wheel bg-white text-xs text-black"></ul>
+								<!-- <button class="btn--spin absolute top-[40%] left-[40%] bg-red-600 rounded-full w-14 h-14 z-20 text-white">Xoay</button> -->
+								<!-- <ul class="list__ball"></ul> -->
+							</div>
+							<div id="arrow__ball" class="absolute z-20">
+								<ul class="wheel__ball"></ul>
 							</div>
 							<p class="text-center text-white text-xl">Còn <span class="font-bold">4</span> lượt</p>
 							<br />
-							<button class="btn--spin absolute top-[35%] bg-red-600 rounded-full w-14 h-14 z-20 text-white">Xoay</button>
+							<!-- <button class="btn--spin absolute top-[35%] bg-red-600 rounded-full w-14 h-14 z-20 text-white">Xoay</button> -->
+							<button class="btn--spin absolute top-[43%] left-[43%] bg-red-600 rounded-full w-14 h-14 z-20 text-white">Xoay</button>
 						</section>
 						<h1 class="msg"></h1>
 					</main>

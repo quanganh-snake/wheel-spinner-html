@@ -5,6 +5,7 @@
 	let currentRotate = 0;
 	let isRotating = false;
 	const wheel = $(".wheel");
+	const wheelBall = $(".wheel__ball");
 	const btnWheel = $(".btn--spin");
 	const showMsg = $(".msg");
 
@@ -49,6 +50,9 @@
 
 	//=====< Số đo góc của 1 phần thưởng chiếm trên hình tròn >=====
 	const rotate = 360 / size;
+	const numBall = 20;
+	const rotateBall = 360 / numBall;
+	const radius = 142;
 
 	//=====< Số đo góc cần để tạo độ nghiêng, 90 độ trừ đi góc của 1 phần thưởng chiếm >=====
 	const skewY = 90 - rotate;
@@ -87,6 +91,34 @@
 		wheel.appendChild(elm);
 	});
 
+	// Tạo list ball
+	// Array(18)
+	// 	.fill(1)
+	// 	.map((item, index) => {
+	// 		const elmBall = document.createElement("li");
+	// 		elmBall.style.transform = `rotate(${rotateBall * index}deg)`;
+	// 		elmBall.style.width = "10px";
+	// 		elmBall.style.height = "10px";
+	// 		elmBall.style.position = "absolute";
+	// 		elmBall.classList.add("item__ball");
+	// 		wheelBall.appendChild(elmBall);
+	// 	});
+	Array(numBall)
+		.fill(1)
+		.map((item, index) => {
+			const elmBall = document.createElement("li");
+			const angle = rotateBall * index;
+			const x = radius * Math.cos((angle * Math.PI) / 180);
+			const y = radius * Math.sin((angle * Math.PI) / 180);
+
+			elmBall.style.width = "14.75px";
+			elmBall.style.height = "15.75px";
+			elmBall.style.position = "absolute";
+			elmBall.style.left = `calc(50% + ${x + 0.95}px - 8px)`; // 50% là trung tâm, -5px để điều chỉnh kích thước phần tử (10px / 2)
+			elmBall.style.top = `calc(50% + ${y + 1}px - 8px)`; // 50% là trung tâm, -5px để điều chỉnh kích thước phần tử (10px / 2)
+			elmBall.classList.add("item__ball");
+			wheelBall.appendChild(elmBall);
+		});
 	/********** Hàm bắt đầu **********/
 	const start = () => {
 		showMsg.innerHTML = "";
@@ -110,6 +142,14 @@
 	/********** Hàm quay vòng quay **********/
 	const rotateWheel = (currentRotate, index) => {
 		$(".wheel").style.transform = `rotate(${
+			//=====< Góc quay hiện tại trừ góc của phần thưởng>=====
+			//=====< Trừ tiếp cho một nửa góc của 1 phần thưởng để đưa mũi tên về chính giữa >=====
+			currentRotate - index * rotate - rotate / 2
+		}deg)`;
+	};
+
+	const rotateWheelBall = (currentRotate, index) => {
+		$(".wheel__ball").style.transform = `rotate(${
 			//=====< Góc quay hiện tại trừ góc của phần thưởng>=====
 			//=====< Trừ tiếp cho một nửa góc của 1 phần thưởng để đưa mũi tên về chính giữa >=====
 			currentRotate - index * rotate - rotate / 2
@@ -153,25 +193,5 @@
 	/********** Sự kiện click button start **********/
 	btnWheel.addEventListener("click", () => {
 		!isRotating && start();
-	});
-	function createBalls(parentElement, ballCount) {
-		const radius = 150;
-		const center = { x: 150, y: 150 };
-		for (let i = 0; i < ballCount; i++) {
-			const angle = (i / (ballCount / 2)) * Math.PI;
-			const x = center.x + radius * Math.cos(angle);
-			const y = center.y + radius * Math.sin(angle);
-
-			const ball = document.createElement("div");
-			ball.className = "ball";
-			ball.style.left = `${x}px`;
-			ball.style.top = `${y}px`;
-			parentElement.appendChild(ball);
-		}
-	}
-
-	document.addEventListener("DOMContentLoaded", function () {
-		const listBall = document.querySelector(".list__ball");
-		createBalls(listBall, 18);
 	});
 })();

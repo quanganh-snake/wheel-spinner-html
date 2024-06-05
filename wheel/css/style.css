@@ -1,3 +1,7 @@
+:root {
+	--size-wheel: 300px;
+}
+
 .bad-script-regular {
 	font-family: "Bad Script", cursive;
 	font-weight: 400;
@@ -11,38 +15,42 @@
 	text-transform: capitalize;
 }
 
-ul {
+ul#wheel {
 	position: relative;
+	border-radius: 50%;
+	border: 14px solid #e53702;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	z-index: 10;
 	padding: 0;
 	margin: 1rem 0;
 	width: var(--size-wheel);
 	height: var(--size-wheel);
-	border: 10px solid red;
-	border-radius: 50%;
 	list-style: none;
 	overflow: hidden;
 	transition: cubic-bezier(0.075, 0.8, 0.2, 1) 7s;
 }
 
-span#arrow {
+div#arrow {
 	display: inline-block;
 	position: relative;
 	padding: 0.5rem;
 }
 
-span#arrow::before {
+div#arrow::before {
 	content: "";
 	position: absolute;
 	top: 35%;
 	left: 50%;
 	border-left: 1.8rem solid transparent;
 	border-right: 1.8rem solid transparent;
-	border-bottom: 2.8rem solid red;
-	z-index: 2;
+	border-bottom: 2.8rem solid #dc2626;
+	z-index: 12;
 	transform: translateX(-50%);
+	border-radius: 20px;
 }
 
-span#arrow::after {
+div#arrow::after {
 	content: "";
 	width: 3.7rem;
 	height: 3.7rem;
@@ -114,5 +122,5 @@ button {
 }
 
 button:hover {
-	opacity: 0.8;
+	/* opacity: 0.8; */
 }
